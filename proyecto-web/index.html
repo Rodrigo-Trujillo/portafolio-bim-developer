@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rodrigo Trujillo | BIM Developer</title>
+  <meta name="description" content="Portafolio de Rodrigo Trujillo, ingeniero civil y BIM Developer: automatización con Python, Revit API, Django y Speckle.">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ENCABEZADO Y NAVEGACIÓN -->
+  <header class="site-header">
+    <div class="container header__inner">
+      <a class="logo" href="#inicio">Rodrigo Trujillo</a>
+
+      <button class="nav-toggle" id="nav-toggle" type="button"
+              aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <ul class="nav__list">
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+        Modo oscuro
+      </button>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- HERO -->
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+      <div class="container">
+        <p class="hero__eyebrow">Ingeniero civil · BIM Developer</p>
+        <h1 id="hero-titulo">Automatizo flujos BIM con Python para que los datos del modelo trabajen por ti.</h1>
+        <p class="hero__text">Combino ingeniería civil, datos y desarrollo de software: Revit API, pyRevit, Django y Speckle.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn--secondary" href="#contacto">Contactar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section class="section" id="sobre-mi" aria-labelledby="sobre-mi-titulo">
+      <div class="container">
+        <h2 id="sobre-mi-titulo">Sobre mí</h2>
+        <p class="section__intro">
+          Soy ingeniero civil con enfoque estructural y formación en sistemas. Construyo herramientas que
+          extraen, validan y exponen datos de modelos BIM, y busco trabajo remoto con empresas de
+          tecnología y AEC.
+        </p>
+        <a class="btn btn--secondary" href="cv.pdf" download>Descargar CV</a>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section class="section section--alt" id="proyectos" aria-labelledby="proyectos-titulo">
+      <div class="container">
+        <h2 id="proyectos-titulo">Proyectos</h2>
+        <p class="section__intro">Cuatro proyectos que conectan Revit, la nube y una API web.</p>
+
+        <div class="grid grid--projects">
+
+          <article class="card">
+            <img class="card__media" src="img/bim-parameter-extractor.png"
+                 alt="Repositorio bim-parameter-extractor en GitHub" width="1200" height="800" loading="lazy">
+            <div class="card__body">
+              <h3>pyRevit Parameter Extractor</h3>
+              <p>Extrae datos de elementos estructurales desde Revit y los exporta a JSON y CSV.</p>
+              <ul class="tags" aria-label="Tecnologías">
+                <li class="tag">Python</li>
+                <li class="tag">Revit API</li>
+                <li class="tag">pyRevit</li>
+              </ul>
+              <a class="btn btn--primary" href="https://github.com/Rodrigo-Trujillo/bim-parameter-extractor"
+                 target="_blank" rel="noopener noreferrer">Ver repositorio</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__media card__media--placeholder" role="img"
+                 aria-label="Captura de QA Automation próximamente">Captura próximamente</div>
+            <div class="card__body">
+              <h3>QA Automation</h3>
+              <p>Valida la calidad del modelo BIM con reglas JSON y resalta los errores con colores en Revit.</p>
+              <ul class="tags" aria-label="Tecnologías">
+                <li class="tag">Python</li>
+                <li class="tag">JSON</li>
+                <li class="tag">Revit API</li>
+              </ul>
+              <span class="btn btn--secondary btn--disabled" aria-disabled="true">Repositorio próximamente</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card__media" src="img/infrastructure-asset-management-system.png"
+                 alt="Repositorio Infrastructure-Asset-Management-System en GitHub" width="1200" height="800" loading="lazy">
+            <div class="card__body">
+              <h3>Infrastructure Asset Management System</h3>
+              <p>API REST en Django que gestiona activos de infraestructura y recibe datos BIM desde pyRevit.</p>
+              <ul class="tags" aria-label="Tecnologías">
+                <li class="tag">Django</li>
+                <li class="tag">DRF</li>
+                <li class="tag">Swagger</li>
+              </ul>
+              <a class="btn btn--primary" href="https://github.com/Rodrigo-Trujillo/Infrastructure-Asset-Management-System"
+                 target="_blank" rel="noopener noreferrer">Ver repositorio</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__media card__media--placeholder" role="img"
+                 aria-label="Captura de la integración con Speckle próximamente">Captura próximamente</div>
+            <div class="card__body">
+              <h3>Integración con Speckle API</h3>
+              <p>Consulta en tiempo real datos de modelos BIM en la nube de Speckle desde la API de Django.</p>
+              <ul class="tags" aria-label="Tecnologías">
+                <li class="tag">Speckle</li>
+                <li class="tag">GraphQL</li>
+                <li class="tag">Python</li>
+              </ul>
+              <a class="btn btn--primary" href="https://github.com/Rodrigo-Trujillo/Infrastructure-Asset-Management-System"
+                 target="_blank" rel="noopener noreferrer">Ver repositorio</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section class="section" id="habilidades" aria-labelledby="habilidades-titulo">
+      <div class="container">
+        <h2 id="habilidades-titulo">Habilidades</h2>
+        <p class="section__intro">Las herramientas con las que trabajo a diario.</p>
+
+        <div class="grid grid--skills">
+          <article class="card card--skill">
+            <h3>Backend</h3>
+            <ul class="tags"><li class="tag">Python</li><li class="tag">Django</li><li class="tag">DRF</li></ul>
+          </article>
+          <article class="card card--skill">
+            <h3>BIM</h3>
+            <ul class="tags"><li class="tag">Revit API</li><li class="tag">pyRevit</li><li class="tag">Speckle API</li></ul>
+          </article>
+          <article class="card card--skill">
+            <h3>IA y automatización</h3>
+            <ul class="tags"><li class="tag">LangChain</li><li class="tag">LangGraph</li><li class="tag">n8n</li></ul>
+          </article>
+          <article class="card card--skill">
+            <h3>Datos e ingeniería</h3>
+            <ul class="tags"><li class="tag">SQL</li><li class="tag">AutoCAD Civil 3D</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section section--alt" id="contacto" aria-labelledby="contacto-titulo">
+      <div class="container contact">
+        <div>
+          <h2 id="contacto-titulo">Contacto</h2>
+          <p class="section__intro">¿Tienes una oferta o un proyecto? Escríbeme y te respondo pronto.</p>
+          <ul class="contact__links">
+            <li><a href="https://github.com/Rodrigo-Trujillo" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/rodrigo-andr%C3%A9s-trujillo-cort%C3%A9s-02255b267/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          </ul>
+        </div>
+
+        <form class="form" id="contact-form" novalidate>
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" required aria-describedby="error-nombre">
+            <p class="field__error" id="error-nombre" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="error-email">
+            <p class="field__error" id="error-email" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required aria-describedby="error-mensaje"></textarea>
+            <p class="field__error" id="error-mensaje" role="alert"></p>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Enviar mensaje</button>
+          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Rodrigo Andrés Trujillo Cortés. Hecho con HTML, CSS y JavaScript.</p>
+    </div>
+  </footer>
+</body>
+</html>

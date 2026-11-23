@@ -1,0 +1,571 @@
+/* ==========================================================
+   PORTAFOLIO - Rodrigo Trujillo
+   Enfoque mobile-first. Puntos de quiebre: 768px y 1200px.
+   ========================================================== */
+
+/* ---------- 1. Variables (tema claro por defecto) ---------- */
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f4f6f8;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --heading: #0f2a43;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --link: #1d4ed8;
+  --border: #e5e7eb;
+  --border-strong: #9ca3af;
+  --tag-bg: #e8eefb;
+  --tag-text: #0f2a43;
+  --focus: #2563eb;
+  --error: #b91c1c;
+  --success: #166534;
+  --footer-bg: #0f2a43;
+  --footer-text: #e5e7eb;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
+  --radius: 12px;
+  --space: 24px;
+  --header-h: 64px;
+  color-scheme: light;
+}
+
+/* ---------- 2. Tema oscuro (lo activa app.js con data-theme) ---------- */
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --bg-alt: #0f172a;
+  --card: #111b2e;
+  --text: #e5e7eb;
+  --muted: #cbd5e1;
+  --heading: #f3f4f6;
+  --link: #60a5fa;
+  --border: #1f2a44;
+  --border-strong: #64748b;
+  --tag-bg: #1b2a47;
+  --tag-text: #bfdbfe;
+  --focus: #93c5fd;
+  --error: #fca5a5;
+  --success: #86efac;
+  --footer-bg: #060b14;
+  --footer-text: #cbd5e1;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.55);
+  color-scheme: dark;
+}
+
+/* ---------- 3. Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 12px;
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(2rem, 1.6rem + 1.6vw, 2.5rem); /* 32px a 40px */
+}
+
+h2 {
+  font-size: 1.75rem; /* 28px */
+}
+
+h3 {
+  font-size: 1.25rem; /* 20px */
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+a {
+  color: var(--link);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+section[id] {
+  scroll-margin-top: calc(var(--header-h) + 8px);
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Foco visible para teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Enlace para saltar al contenido */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--primary);
+  color: #ffffff;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
+/* ---------- 4. Botones ---------- */
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn--primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.btn--primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn--secondary {
+  background: transparent;
+  border-color: var(--primary);
+  color: var(--link);
+}
+
+.btn--secondary:hover {
+  background: var(--tag-bg);
+}
+
+.btn--disabled,
+.btn--disabled:hover {
+  background: transparent;
+  border: 2px dashed var(--border-strong);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+/* ---------- 5. Encabezado y navegación (móvil) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--header-h);
+}
+
+.logo {
+  order: 1;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--heading);
+  text-decoration: none;
+}
+
+.theme-toggle {
+  order: 2;
+  margin-left: auto;
+  padding: 8px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-alt);
+}
+
+.nav-toggle {
+  order: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-toggle__bar {
+  display: block;
+  height: 2px;
+  background: var(--text);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Menú desplegable: oculto hasta que app.js añade .is-open */
+.site-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.site-nav.is-open {
+  display: block;
+}
+
+.nav__list {
+  padding: 8px 20px 16px;
+}
+
+.nav__list a {
+  display: block;
+  padding: 12px 0;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav__list a:hover {
+  color: var(--link);
+}
+
+/* ---------- 6. Secciones ---------- */
+.hero {
+  padding: 72px 0 56px;
+}
+
+.hero__eyebrow {
+  margin-bottom: 12px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--link);
+}
+
+.hero h1 {
+  max-width: 22ch;
+}
+
+.hero__text {
+  max-width: 60ch;
+  font-size: 1.125rem;
+  color: var(--muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.section {
+  padding: 64px 0;
+}
+
+.section--alt {
+  background: var(--bg-alt);
+}
+
+.section__intro {
+  max-width: 65ch;
+  margin-bottom: 32px;
+  color: var(--muted);
+}
+
+/* ---------- 7. Cuadrículas ---------- */
+.grid {
+  display: grid;
+  gap: var(--space);
+  grid-template-columns: 1fr; /* móvil: una columna */
+}
+
+/* ---------- 8. Tarjetas ---------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.card--skill {
+  padding: var(--space);
+}
+
+.card__media {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border);
+}
+
+.card__media--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-alt);
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: var(--space);
+}
+
+.card__body .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* ---------- 9. Etiquetas de tecnología ---------- */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.card--skill .tags {
+  margin-bottom: 0;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* ---------- 10. Contacto y formulario ---------- */
+.contact {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+}
+
+.contact__links {
+  display: flex;
+  gap: 20px;
+  font-weight: 600;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field .is-invalid {
+  border-color: var(--error);
+}
+
+.field__error {
+  margin: 6px 0 0;
+  font-size: 0.875rem;
+  color: var(--error);
+}
+
+.form__status {
+  margin: 16px 0 0;
+  font-weight: 600;
+  color: var(--success);
+}
+
+/* ---------- 11. Pie de página ---------- */
+.site-footer {
+  padding: 32px 0;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  font-size: 0.9375rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* ==========================================================
+   TABLET: desde 768px
+   ========================================================== */
+@media (min-width: 768px) {
+  .hero {
+    padding: 104px 0 88px;
+  }
+
+  .grid--projects,
+  .grid--skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+}
+
+/* ==========================================================
+   ESCRITORIO: desde 1200px
+   ========================================================== */
+@media (min-width: 1200px) {
+  /* Navegación horizontal, sin hamburguesa */
+  .nav-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    display: block;
+    position: static;
+    order: 2;
+    margin-left: auto;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .nav__list {
+    display: flex;
+    gap: 8px;
+    padding: 0;
+  }
+
+  .nav__list a {
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+
+  .nav__list a:hover {
+    background: var(--bg-alt);
+  }
+
+  .theme-toggle {
+    order: 3;
+    margin-left: 0;
+  }
+
+  /* Habilidades pasa a 4 columnas; Proyectos se queda en 2x2 */
+  .grid--skills {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- Accesibilidad: menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
